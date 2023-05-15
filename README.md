@@ -24,9 +24,9 @@ Criterios para elegir las funcionalidades a testear:
 Para mantener el repositorio ordenado y facilitar la identificación de la funcionalidad en la que cada desarrollador está trabajando, seguimos una convención de nombres de ramas específica. 
 
 *Cada rama debe ser nombrada siguiendo el formato:*
-<nombre-de-usuario>/CP-<número-de-caso-de-prueba>-<funcionalidad>
+nombre-de-usuario/CP-<número-de-caso-de-prueba>-<funcionalidad>
   
-- <nombre-de-usuario> es tu nombre
+- nombre-de-usuario es tu nombre
 - CP-<número-de-caso-de-prueba> es el ID del caso de prueba con el que estás trabajando
 - <funcionalidad> es la funcionalidad a la que pertenece ese caso
 
