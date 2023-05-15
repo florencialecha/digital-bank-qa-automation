@@ -26,9 +26,9 @@ Para mantener el repositorio ordenado y facilitar la identificación de la funci
 *Cada rama debe ser nombrada siguiendo el formato:*
 <nombre-de-usuario>/CP-<número-de-caso-de-prueba>-<funcionalidad>
   
-=> <nombre-de-usuario> es tu nombre
-=> CP-<número-de-caso-de-prueba> es el ID del caso de prueba con el que estás trabajando
-=> <funcionalidad> es la funcionalidad a la que pertenece ese caso
+- <nombre-de-usuario> es tu nombre
+- CP-<número-de-caso-de-prueba> es el ID del caso de prueba con el que estás trabajando
+- <funcionalidad> es la funcionalidad a la que pertenece ese caso
 
 Por ejemplo, si estás trabajando en el caso de prueba CP-01 para automatizar el login de Digital Bank, y tu nombre de usuario es "johndoe", podrías nombrar tu rama de la siguiente manera:
 johndoe/CP-01-login
