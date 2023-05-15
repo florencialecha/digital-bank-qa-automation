@@ -9,12 +9,14 @@ https://docs.google.com/spreadsheets/d/1wD-ZtN_Ml2dYcbaEL5WYhmGedhVB16YjBGcE_SqF
 
 FUNCIONALIDADES A TESTEAR
 1 - Testear el LOGIN (JUAN) 
-2 - Deposit - que se pueda hacer un depósito (FLOR)
-5 - View Checking - ver movimientos cuenta corriente6 - View savings - ver movimientos caja de ahorro
+2 - View Checking - ver movimientos cuenta corriente6 - View savings - ver movimientos caja de ahorro (FLOR)
+3 - View Savings - Ver movimientos caja de ahorro
+
 
 SI LLEGAMOS:
-3 - Withdraw - que se pueda hacer un retiro
-4 - Trasfer Between Accounts - que se pueda hacer una transferencia
+- Deposit - que se pueda hacer un depósito 
+- Withdraw - que se pueda hacer un retiro
+- Trasfer Between Accounts - que se pueda hacer una transferencia
 
 Criterios para elegir las funcionalidades a testear:
 - Son las funcionalidades que más van a usar los usuarios de un banco y deben funcionar correctamente. 
