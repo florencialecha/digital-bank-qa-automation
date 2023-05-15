@@ -19,3 +19,17 @@ SI LLEGAMOS:
 Criterios para elegir las funcionalidades a testear:
 - Son las funcionalidades que más van a usar los usuarios de un banco y deben funcionar correctamente. 
 - Los datos de estas funcionalidades luego son utilizados en otras partes de la aplicación como los dashboards
+
+Convención de nombres de las ramas
+Para mantener el repositorio ordenado y facilitar la identificación de la funcionalidad en la que cada desarrollador está trabajando, seguimos una convención de nombres de ramas específica. Cada rama debe ser nombrada siguiendo el formato:
+
+php
+Copy code
+<nombre-de-usuario>/CP-<número-de-caso-de-prueba>-<descripción-breve>
+Aquí, <nombre-de-usuario> es tu nombre de usuario o tus iniciales, CP-<número-de-caso-de-prueba> es el ID del caso de prueba con el que estás trabajando y <descripción-breve> es una descripción corta que indica qué estás haciendo en esa rama.
+
+Por ejemplo, si estás trabajando en el caso de prueba CP-01 para automatizar el login de Digital Bank, y tu nombre de usuario es "johndoe", podrías nombrar tu rama de la siguiente manera:
+
+Copy code
+johndoe/CP-01-automate-login
+Esto facilitará la identificación rápida de quién está trabajando en qué y en qué se está trabajando. Asegúrate de que la descripción breve sea clara y suficientemente descriptiva para entender el propósito de la rama solo con leer el nombre.
