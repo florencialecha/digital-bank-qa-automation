@@ -3,5 +3,6 @@
     <suite-files>
         <suite-file path="testng/loginSuite.xml" />
         <suite-file path="testng/depositSuite.xml" />
+        <suite-file path="testng/healthCheckSuite.xml" />
     </suite-files>
 </suite>
