@@ -5,7 +5,7 @@
     </listeners>
     <test name="View Checking Suite">
         <classes>
-           <class name="com.digitalbank.qaautomation.tests.viewChecking.shouldReturnNoAccountMessageWhenViewingEmptyCheckingAccountTest"></class>
+           <class name="com.digitalbank.qaautomation.tests.viewChecking.NoAccountExistViewTest"></class>
         </classes>
     </test>
 </suite>

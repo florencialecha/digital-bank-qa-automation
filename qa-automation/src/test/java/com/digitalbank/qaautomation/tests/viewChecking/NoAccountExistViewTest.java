@@ -14,9 +14,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class shouldReturnNoAccountMessageWhenViewingEmptyCheckingAccountTest {
+public class NoAccountExistViewTest {
 
-    protected WebDriver driver;
+    private WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
@@ -30,15 +30,16 @@ public class shouldReturnNoAccountMessageWhenViewingEmptyCheckingAccountTest {
     @Story("Display message when viewing empty checking account")
     @Description("When a user with no checking accounts views their checking accounts, a 'No Account' message should be displayed.")
     @Test
-    public void handle() {
+    public void shouldDisplayNoAccountsAlertWhenNoAccountsExist() {
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
+
+        // Las credenciales de este usuario van a externalizarse cuando se una con la login page
         SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
-        //Esperas una alerta que diga no accounts
         String expectedMessage = "No Accounts";
         String actualMessage = checkingViewPage.getNoAccountAlert();
         Assert.assertEquals(actualMessage, expectedMessage, "The message should inform the user that no account exists");
@@ -47,7 +48,7 @@ public class shouldReturnNoAccountMessageWhenViewingEmptyCheckingAccountTest {
 
     @AfterMethod
     public void tearDown() {
-        driver.close();
+        driver.quit();
     }
 
 }
