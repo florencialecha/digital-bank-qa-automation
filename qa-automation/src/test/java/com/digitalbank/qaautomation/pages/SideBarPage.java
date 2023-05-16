@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class SideBarPage extends BasePage {
 
+    @FindBy (className = "navbar-brand")
+    public WebElement bankLogo;
+
     @FindBy(id = "checking-menu")
     private WebElement checkingListBtn;
 
