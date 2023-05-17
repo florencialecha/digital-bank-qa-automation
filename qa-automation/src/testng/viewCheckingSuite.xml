@@ -5,7 +5,9 @@
     </listeners>
     <test name="View Checking Suite">
         <classes>
-           <class name="com.digitalbank.qaautomation.tests.viewChecking.NoAccountExistViewTest"></class>
+            <class name="com.digitalbank.qaautomation.tests.viewChecking.NoAccountExistViewTest"></class>
+            <class name="com.digitalbank.qaautomation.tests.viewChecking.AccountExistViewTest"></class>
+            <class name="com.digitalbank.qaautomation.tests.viewChecking.SingleAccountActivationTest"></class>
         </classes>
     </test>
 </suite>
