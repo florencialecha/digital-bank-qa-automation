@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.dataProviders.LoginData;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class LoginTest {
+public class LoginTestCP01 {
 
     private WebDriver driver;
 
@@ -31,7 +31,7 @@ public class LoginTest {
     }
 
     @Description("This test should try to log in to the website with the specified credentials")
-    @Test(testName = "Login Test ",dataProvider = "credentials", dataProviderClass = LoginData.class)
+    @Test(testName = "Login with valid credentials ",dataProvider = "credentials", dataProviderClass = LoginData.class)
     public void loginTest(String user, String pass) throws Exception {
 
 
