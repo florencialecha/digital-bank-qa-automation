@@ -1,5 +1,6 @@
 package com.digitalbank.qaautomation.tests.newChecking;
 
+import com.digitalbank.qaautomation.dataProviders.AccountData;
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
 import com.digitalbank.qaautomation.pages.NewCheckingPage;
@@ -27,11 +28,10 @@ public class NewCheckingAccountCreation {
         driver = new ChromeDriver(options);
     }
 
-    @Feature("Account Creation")
-    @Story("Creation of a standard individual checking account")
-    @Description("When a user enters valid data in the fields, a new standard individual checking account should be created.")
-    @Test
-    public void shouldCreateNewStandardIndividualAccountWithValidData() {
+    @Story("Creation of different types of checking accounts")
+    @Description("When a user enters valid data in the fields, a new checking account should be created.")
+    @Test(dataProvider = "accountData", dataProviderClass = AccountData.class)
+    public void shouldCreateNewAccountWhenValidDataIsProvided(String accountType, String ownershipType, String accountName, String initialDeposit) {
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
@@ -44,16 +44,16 @@ public class NewCheckingAccountCreation {
         NewCheckingPage newCheckingPage = sideBarPage.clickNewCheckingPageButton();
 
         // Fill the form
-        newCheckingPage.selectCheckingAccountType("Standard Checking");
-        newCheckingPage.selectAccountOwnership("Individual");
-        newCheckingPage.setAccountName("New Account");
-        newCheckingPage.setInitialDeposit("5000");
+        newCheckingPage.selectCheckingAccountType(accountType);
+        newCheckingPage.selectAccountOwnership(ownershipType);
+        newCheckingPage.setAccountName(accountName);
+        newCheckingPage.setInitialDeposit(initialDeposit);
 
         // Submit the form
         CheckingViewPage checkingViewPage = newCheckingPage.submitForm();
 
         // Verify that new account is created
-        boolean isNewAccountCreated = checkingViewPage.existsAccountWithName("New Account");
+        boolean isNewAccountCreated = checkingViewPage.existsAccountWithName(accountName);
         Assert.assertTrue(isNewAccountCreated, "New account should be created with provided valid data");
     }
 

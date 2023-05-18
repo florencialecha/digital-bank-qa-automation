@@ -6,10 +6,10 @@ public class AccountData {
     @DataProvider(name = "accountData")
     public Object[][] accountData() {
         return new Object[][]{
-                {"Standard Checking", "Individual"},
-                {"Standard Checking", "Joint"},
-                {"Interest Checking", "Joint"},
-                {"Interest Checking", "Individual"}
+                {"Standard Checking", "Individual", "Standard Individual Account", "5000"},
+                {"Standard Checking", "Joint", "Standard Joint Account", "5000"},
+                {"Interest Checking", "Joint", "Interest Joint Account", "5000"},
+                {"Interest Checking", "Individual", "Interest Individual Account", "5000"}
         };
     }
 }
