@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="New Checking Suite">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    <test name="New Checking Suite">
+        <classes>
+            <class name="com.digitalbank.qaautomation.tests.newChecking.NewCheckingAccountCreation"></class>
+        </classes>
+    </test>
+</suite>
