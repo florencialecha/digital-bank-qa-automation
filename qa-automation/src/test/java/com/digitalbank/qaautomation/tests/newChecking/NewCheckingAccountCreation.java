@@ -55,6 +55,11 @@ public class NewCheckingAccountCreation {
         // Verify that new account is created
         boolean isNewAccountCreated = checkingViewPage.existsAccountWithName(accountName);
         Assert.assertTrue(isNewAccountCreated, "New account should be created with provided valid data");
+
+        // Verify that the account balance is correct
+        String accountBalance = checkingViewPage.getAccountBalance(accountName);
+        Assert.assertEquals(accountBalance, initialDeposit, "New account balance should match initial deposit");
+
     }
 
     @AfterMethod

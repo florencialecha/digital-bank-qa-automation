@@ -82,4 +82,15 @@ public class CheckingViewPage extends BasePage {
         return false;
     }
 
+    @Step("Get account balance")
+    public String getAccountBalance(String accountName) {
+        for (WebElement accountCard : accountCards) {
+            WebElement accountNameElement = accountCard.findElement(By.cssSelector(".h4.m-0"));
+            if (accountNameElement.getText().equals(accountName)) {
+                WebElement accountBalanceElement = accountCard.findElement(By.xpath(".//div[contains(text(),'Balance:')]"));
+                return accountBalanceElement.getText().replace("Balance: $", "");
+            }
+        }
+        return null;
+    }
 }
