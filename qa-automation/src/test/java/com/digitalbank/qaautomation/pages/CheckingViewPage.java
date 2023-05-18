@@ -70,4 +70,16 @@ public class CheckingViewPage extends BasePage {
             switchElement.click();
         }
     }
+
+    @Step("Check if account with name '{accountName}' exists")
+    public boolean existsAccountWithName(String accountName) {
+        for (WebElement accountCard : accountCards) {
+            WebElement accountNameElement = accountCard.findElement(By.cssSelector(".h4.m-0"));
+            if (accountNameElement.getText().equals(accountName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

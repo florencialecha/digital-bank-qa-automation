@@ -31,6 +31,7 @@ public class SideBarPage extends BasePage {
         return new CheckingViewPage(driver);
     }
 
+    @Step("Click on the new checking account button")
     public NewCheckingPage clickNewCheckingPageButton() {
         newCheckingBtn.click();
         return new NewCheckingPage(driver);

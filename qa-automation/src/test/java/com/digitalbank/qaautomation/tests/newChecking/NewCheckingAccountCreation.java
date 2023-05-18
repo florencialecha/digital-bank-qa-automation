@@ -1,5 +1,6 @@
 package com.digitalbank.qaautomation.tests.newChecking;
 
+import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
 import com.digitalbank.qaautomation.pages.NewCheckingPage;
 import com.digitalbank.qaautomation.pages.SideBarPage;
@@ -9,6 +10,7 @@ import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,14 +39,13 @@ public class NewCheckingAccountCreation {
         // Log in with a user
         SideBarPage sideBarPage = loginPage.logIn("jsmith@demo.io", "Demo123!");
         sideBarPage.clickCheckingList();
-        sideBarPage.clickNewCheckingPageButton();
 
         // Navigate to New Checking Page
         NewCheckingPage newCheckingPage = sideBarPage.clickNewCheckingPageButton();
 
         // Fill the form
-        newCheckingPage.selectAccountType("Standard Checking");
-        newCheckingPage.selectOwnership("Individual");
+        newCheckingPage.selectCheckingAccountType("Standard Checking");
+        newCheckingPage.selectAccountOwnership("Individual");
         newCheckingPage.setAccountName("New Account");
         newCheckingPage.setInitialDeposit("5000");
 
@@ -52,7 +53,7 @@ public class NewCheckingAccountCreation {
         CheckingViewPage checkingViewPage = newCheckingPage.submitForm();
 
         // Verify that new account is created
-        boolean isNewAccountCreated = checkingViewPage.isAccountCreated("New Account");
+        boolean isNewAccountCreated = checkingViewPage.existsAccountWithName("New Account");
         Assert.assertTrue(isNewAccountCreated, "New account should be created with provided valid data");
     }
 
@@ -60,4 +61,5 @@ public class NewCheckingAccountCreation {
     public void tearDown() {
         driver.quit();
     }
+
 }
