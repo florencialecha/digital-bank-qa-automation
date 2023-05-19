@@ -6,6 +6,8 @@ import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -34,22 +36,15 @@ public class LoginTestCP01 {
     @Test(testName = "Login with valid credentials ",dataProvider = "credentials", dataProviderClass = LoginData.class)
     public void loginTest(String user, String pass) throws Exception {
 
-
         // Navigate to the home page of the web application being tested.
         driver.get("http://digitalbank.upcamp.io/bank/login");
 
         LoginPage loginPage = new LoginPage(driver);
         SideBarPage sideBarPage = loginPage.logIn(user, pass);
-        if (sideBarPage.bankLogo.isDisplayed()){
-            System.out.println("Login successful");
+        if (sideBarPage.isLogoPresent()){
+            Assert.assertTrue(true, "Login Successful");
+        } else if (loginPage.isLoginAlertPresent()){
+            Assert.fail("Wrong credentials, can't log in");
         }
-
-
-
-
-
-
-
-
     }
 }

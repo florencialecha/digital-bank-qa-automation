@@ -1,14 +1,12 @@
 package com.digitalbank.qaautomation.pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SideBarPage extends BasePage {
-
-    @FindBy (className = "navbar-brand")
-    public WebElement bankLogo;
 
     @FindBy(id = "checking-menu")
     private WebElement checkingListBtn;
@@ -29,5 +27,10 @@ public class SideBarPage extends BasePage {
     public CheckingViewPage clickViewCheckingAccountButton() {
         viewCheckingBtn.click();
         return new CheckingViewPage(driver);
+    }
+
+    @Step ("Confirm if we logged in to the website")
+    public boolean isLogoPresent() {
+        return !driver.findElements(By.className("navbar-brand")).isEmpty();
     }
 }
