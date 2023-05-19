@@ -1,17 +1,14 @@
 package com.digitalbank.qaautomation.tests.loginTests;
 
-
 import com.digitalbank.qaautomation.pages.SideBarPage;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.digitalbank.qaautomation.dataProviders.LoginData;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
