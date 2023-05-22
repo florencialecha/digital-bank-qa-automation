@@ -1,6 +1,6 @@
 package com.digitalbank.qaautomation.tests.loginTests;
 
-import com.digitalbank.qaautomation.pages.SideBarPage;
+import com.digitalbank.qaautomation.pages.HomePage;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.dataProviders.LoginData;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class LoginTestCP01 {
+public class shouldLoginWhenValidCredentialsAreProvided {
 
     private WebDriver driver;
 
@@ -36,12 +36,15 @@ public class LoginTestCP01 {
         // Navigate to the home page of the web application being tested.
         driver.get("http://digitalbank.upcamp.io/bank/login");
 
+        // Login to the website
         LoginPage loginPage = new LoginPage(driver);
-        SideBarPage sideBarPage = loginPage.logIn(user, pass);
-        if (sideBarPage.isLogoPresent()){
-            Assert.assertTrue(true, "Login Successful");
-        } else if (loginPage.isLoginAlertPresent()){
-            Assert.fail("Wrong credentials, can't log in");
-        }
+        loginPage.logIn(user, pass);
+        HomePage homePage = new HomePage(driver);
+
+        // Asserts PageTitle and URL
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "http://digitalbank.upcamp.io/bank/home");
+        String pageTitle = "Dashboard";
+        Assert.assertEquals(pageTitle, homePage.dashboardTitle.getText());
     }
 }
