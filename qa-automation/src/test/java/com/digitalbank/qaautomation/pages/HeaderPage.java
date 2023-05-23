@@ -25,6 +25,7 @@ import org.openqa.selenium.support.FindBy;
             userProfileBtn.click();
         }
 
+        @Step ("Deleting account data")
         public HomePage clickDeleteDataButton() {
             deleteDataBtn.click();
             return new HomePage(driver);

@@ -35,28 +35,22 @@ public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
     @Test(testName = "Try login with valid username and wrong password ",dataProvider = "credentials", dataProviderClass = RememberMeLoginData.class)
     public void loginTest(String user, String pass) throws Exception {
 
-        // Navigate to the home page of the web application being tested.
+
         driver.get("http://digitalbank.upcamp.io/bank/login");
 
-        // Try Login to the website
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
         HeaderPage headerPage = new HeaderPage(driver);
 
-        //Assert login
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrl, "http://digitalbank.upcamp.io/bank/home");
+        String expectedUrl = "http://digitalbank.upcamp.io/bank/home";
+        Assert.assertEquals(currentUrl, expectedUrl);
 
-        //Logout
         headerPage.logOut();
 
-        //Assert Remembered username
         String rememberedUsername = loginPage.usernameInput.getAttribute("value");
         Assert.assertEquals(rememberedUsername, user);
-
-
-
-
+        
     }
 }
 
