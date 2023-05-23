@@ -9,18 +9,3 @@
         </classes>
     </test>
 </suite>
-
-<!--EJEMPLO-->
-<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">-->
-<!--<suite name="ProductSearchSuite">-->
-<!--<listeners>-->
-<!--    <listener class-name="io.qameta.allure.testng.AllureTestNg"/>-->
-<!--</listeners>-->
-<!--<test name="ProductSearchTests">-->
-<!--    <classes>-->
-<!--        <class name="com.onlineclothingstore.tests.productSearch.ShouldReturnProductItemsWhenExistingItemSearchedTest" />-->
-<!--        <class name="com.onlineclothingstore.tests.productSearch.ShouldReturnNoResultsWhenNonExistingItemSearchedTest" />-->
-<!--        <class name="com.onlineclothingstore.tests.productSearch.ShouldHandleSpecialCharactersWhenUsedInSearchesTest" />-->
-<!--    </classes>-->
-<!--</test>-->
-<!--</suite>-->

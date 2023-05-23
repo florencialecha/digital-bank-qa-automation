@@ -34,24 +34,24 @@ public class SingleAccountActivationTest {
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        // Log in with a user with multiple checking accounts
         SideBarPage sideBarPage = loginPage.logIn("jsmith@demo.io", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
-        // Activate the first account
         checkingViewPage.activateAccount(1);
         boolean isFirstAccountActive = checkingViewPage.isAccountActive(1);
-        Assert.assertTrue(isFirstAccountActive, "The first account should be active after activation");
+        String firstAccountActivationErrorMessage = "The first account should be active after activation";
+        Assert.assertTrue(isFirstAccountActive, firstAccountActivationErrorMessage);
 
-        // Activate the second account
         checkingViewPage.activateAccount(2);
+        String secondAccountActivationErrorMessage = "The second account should be active after activation";
         boolean isSecondAccountActive = checkingViewPage.isAccountActive(2);
-        Assert.assertTrue(isSecondAccountActive, "The second account should be active after activation");
+        Assert.assertTrue(isSecondAccountActive, secondAccountActivationErrorMessage);
 
-        // Verify that the first account is deactivated
         isFirstAccountActive = checkingViewPage.isAccountActive(1);
-        Assert.assertFalse(isFirstAccountActive, "The first account should be deactivated after the second account is activated");
+        String firstAccountDeactivationErrorMessage = "The first account should be deactivated after the second account is activated";
+        Assert.assertFalse(isFirstAccountActive, firstAccountDeactivationErrorMessage);
+
     }
 
 }

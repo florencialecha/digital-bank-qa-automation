@@ -35,20 +35,22 @@ public class AccountExistViewTest {
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        //Pasarle usuario con cuentas de checking existentes
         SideBarPage sideBarPage = loginPage.logIn("jsmith@demo.io", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
         String expectedTitle = "View Checking Accounts";
         String actualTitle = checkingViewPage.getPageTitleText();
-        Assert.assertEquals(actualTitle, expectedTitle, "The page title should be 'View Checking Accounts' when accounts exist");
+        String titleErrorMessage = "The page title should be 'View Checking Accounts' when accounts exist";
+        Assert.assertEquals(actualTitle, expectedTitle, titleErrorMessage);
 
         boolean isAccountCardDisplayed = checkingViewPage.isAccountCardDisplayed();
-        Assert.assertTrue(isAccountCardDisplayed, "Account cards should be displayed when accounts exist");
+        String accountCardErrorMessage = "Account cards should be displayed when accounts exist";
+        Assert.assertTrue(isAccountCardDisplayed, accountCardErrorMessage);
 
         boolean isTransactionTableDisplayed = checkingViewPage.isTransactionTableDisplayed();
-        Assert.assertTrue(isTransactionTableDisplayed, "Transaction history should be displayed when accounts exist");
+        String transactionTableErrorMessage = "Transaction history should be displayed when accounts exist";
+        Assert.assertTrue(isTransactionTableDisplayed, transactionTableErrorMessage);
 
     }
 

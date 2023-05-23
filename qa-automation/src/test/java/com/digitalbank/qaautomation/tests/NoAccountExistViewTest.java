@@ -35,14 +35,14 @@ public class NoAccountExistViewTest {
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        // Las credenciales de este usuario van a externalizarse cuando se una con la login page
         SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
-        String expectedMessage = "No Accounts";
-        String actualMessage = checkingViewPage.getNoAccountAlert();
-        Assert.assertEquals(actualMessage, expectedMessage, "The message should inform the user that no account exists");
+        String expectedAlert = "No Accounts";
+        String actualAlert = checkingViewPage.getNoAccountAlert();
+        String alertErrorMessage = "The message should inform the user that no account exists";
+        Assert.assertEquals(actualAlert, expectedAlert, alertErrorMessage);
 
     }
 
