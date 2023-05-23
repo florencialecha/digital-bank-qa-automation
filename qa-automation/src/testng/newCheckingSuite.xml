@@ -5,7 +5,7 @@
     </listeners>
     <test name="New Checking Suite">
         <classes>
-            <class name="com.digitalbank.qaautomation.tests.newChecking.NewCheckingAccountCreation"></class>
+            <class name="com.digitalbank.qaautomation.tests.NewCheckingAccountCreation"></class>
         </classes>
     </test>
 </suite>

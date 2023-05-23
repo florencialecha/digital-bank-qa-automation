@@ -54,7 +54,6 @@ public class CheckingViewPage extends BasePage {
         WebElement accountCard = accountCards.get(accountIndex - 1);
         WebElement toggleActivation = accountCard.findElement(By.cssSelector("label.switch input[type='checkbox']"));
         boolean isChecked = toggleActivation.isSelected();
-
         return isChecked;
     }
 

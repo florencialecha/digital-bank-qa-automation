@@ -1,4 +1,4 @@
-package com.digitalbank.qaautomation.tests.newChecking;
+package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.dataProviders.AccountData;
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
