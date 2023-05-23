@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -34,7 +35,7 @@ public class SingleAccountActivationTest {
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        SideBarPage sideBarPage = loginPage.logIn("jsmith@demo.io", "Demo123!");
+        SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
@@ -52,6 +53,11 @@ public class SingleAccountActivationTest {
         String firstAccountDeactivationErrorMessage = "The first account should be deactivated after the second account is activated";
         Assert.assertFalse(isFirstAccountActive, firstAccountDeactivationErrorMessage);
 
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
     }
 
 }

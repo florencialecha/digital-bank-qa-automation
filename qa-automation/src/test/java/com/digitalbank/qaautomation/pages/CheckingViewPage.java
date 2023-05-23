@@ -54,7 +54,6 @@ public class CheckingViewPage extends BasePage {
         WebElement accountCard = accountCards.get(accountIndex - 1);
         WebElement toggleActivation = accountCard.findElement(By.cssSelector("label.switch input[type='checkbox']"));
         boolean isChecked = toggleActivation.isSelected();
-
         return isChecked;
     }
 
@@ -68,5 +67,28 @@ public class CheckingViewPage extends BasePage {
         if (!isChecked) {
             switchElement.click();
         }
+    }
+
+    @Step("Check if account with name '{accountName}' exists")
+    public boolean existsAccountWithName(String accountName) {
+        for (WebElement accountCard : accountCards) {
+            WebElement accountNameElement = accountCard.findElement(By.cssSelector(".h4.m-0"));
+            if (accountNameElement.getText().equals(accountName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Step("Get account balance")
+    public String getAccountBalance(String accountName) {
+        for (WebElement accountCard : accountCards) {
+            WebElement accountNameElement = accountCard.findElement(By.cssSelector(".h4.m-0"));
+            if (accountNameElement.getText().equals(accountName)) {
+                WebElement accountBalanceElement = accountCard.findElement(By.xpath(".//div[contains(text(),'Balance:')]"));
+                return accountBalanceElement.getText().replace("Balance: $", "");
+            }
+        }
+        return null;
     }
 }
