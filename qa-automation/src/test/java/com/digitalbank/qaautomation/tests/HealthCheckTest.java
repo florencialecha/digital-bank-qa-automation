@@ -32,7 +32,9 @@ public class HealthCheckTest {
 
         driver.get("http://digitalbank.upcamp.io/bank");
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrl, "http://digitalbank.upcamp.io/bank/login", "Main page is not accessible");
+        String expectedUrl = "http://digitalbank.upcamp.io/bank/login";
+        String pageErrorMessage = "The main page should be accessible";
+        Assert.assertEquals(currentUrl, expectedUrl, pageErrorMessage);
 
     }
 
