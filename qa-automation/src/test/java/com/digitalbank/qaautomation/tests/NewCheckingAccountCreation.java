@@ -36,29 +36,24 @@ public class NewCheckingAccountCreation {
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        // Log in with a user
-        SideBarPage sideBarPage = loginPage.logIn("jsmith@demo.io", "Demo123!");
+        SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
         sideBarPage.clickCheckingList();
-
-        // Navigate to New Checking Page
         NewCheckingPage newCheckingPage = sideBarPage.clickNewCheckingPageButton();
 
-        // Fill the form
         newCheckingPage.selectCheckingAccountType(accountType);
         newCheckingPage.selectAccountOwnership(ownershipType);
         newCheckingPage.setAccountName(accountName);
         newCheckingPage.setInitialDeposit(initialDeposit);
 
-        // Submit the form
         CheckingViewPage checkingViewPage = newCheckingPage.submitForm();
 
-        // Verify that new account is created
         boolean isNewAccountCreated = checkingViewPage.existsAccountWithName(accountName);
-        Assert.assertTrue(isNewAccountCreated, "New account should be created with provided valid data");
+        String accountCreationErrorMessage = "New account should be created with provided valid data";
+        Assert.assertTrue(isNewAccountCreated, accountCreationErrorMessage);
 
-        // Verify that the account balance is correct
         String accountBalance = checkingViewPage.getAccountBalance(accountName);
-        Assert.assertEquals(accountBalance, initialDeposit, "New account balance should match initial deposit");
+        String accountBalanceErrorMessage = "New account balance should match initial deposit";
+        Assert.assertEquals(accountBalance, initialDeposit, accountBalanceErrorMessage);
 
     }
 

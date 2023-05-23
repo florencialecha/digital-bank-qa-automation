@@ -35,7 +35,7 @@ public class SingleAccountActivationTest {
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        SideBarPage sideBarPage = loginPage.logIn("jsmith@demo.io", "Demo123!");
+        SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
