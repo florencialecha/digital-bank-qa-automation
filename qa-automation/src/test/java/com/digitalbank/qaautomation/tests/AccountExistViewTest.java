@@ -1,4 +1,4 @@
-package com.digitalbank.qaautomation.tests.viewChecking;
+package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
@@ -14,7 +14,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class SingleAccountActivationTest {
+public class AccountExistViewTest {
 
     private WebDriver driver;
 
@@ -26,38 +26,36 @@ public class SingleAccountActivationTest {
         driver = new ChromeDriver(options);
     }
 
-    @Feature("Account Activation")
-    @Story("Activation of a single account at a time")
-    @Description("When a user activates one account, any other active account should be deactivated.")
+    @Feature("Checking Account Display")
+    @Story("Display account cards and transaction history when checking accounts exist")
+    @Description("When a user with checking accounts views their checking accounts, account cards and transaction history should be displayed.")
     @Test
-    public void shouldAllowOnlyOneActiveAccountAtATime() {
+    public void shouldDisplayCheckingViewPageWhenAccountsExist() {
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        // Log in with a user with multiple checking accounts
         SideBarPage sideBarPage = loginPage.logIn("jsmith@demo.io", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
-        // Activate the first account
-        checkingViewPage.activateAccount(1);
-        boolean isFirstAccountActive = checkingViewPage.isAccountActive(1);
-        Assert.assertTrue(isFirstAccountActive, "The first account should be active after activation");
+        String expectedTitle = "View Checking Accounts";
+        String actualTitle = checkingViewPage.getPageTitleText();
+        String titleErrorMessage = "The page title should be 'View Checking Accounts' when accounts exist";
+        Assert.assertEquals(actualTitle, expectedTitle, titleErrorMessage);
 
-        // Activate the second account
-        checkingViewPage.activateAccount(2);
-        boolean isSecondAccountActive = checkingViewPage.isAccountActive(2);
-        Assert.assertTrue(isSecondAccountActive, "The second account should be active after activation");
+        boolean isAccountCardDisplayed = checkingViewPage.isAccountCardDisplayed();
+        String accountCardErrorMessage = "Account cards should be displayed when accounts exist";
+        Assert.assertTrue(isAccountCardDisplayed, accountCardErrorMessage);
 
-        // Verify that the first account is deactivated
-        isFirstAccountActive = checkingViewPage.isAccountActive(1);
-        Assert.assertFalse(isFirstAccountActive, "The first account should be deactivated after the second account is activated");
+        boolean isTransactionTableDisplayed = checkingViewPage.isTransactionTableDisplayed();
+        String transactionTableErrorMessage = "Transaction history should be displayed when accounts exist";
+        Assert.assertTrue(isTransactionTableDisplayed, transactionTableErrorMessage);
+
     }
 
     @AfterMethod
     public void tearDown() {
         driver.quit();
     }
-
 }

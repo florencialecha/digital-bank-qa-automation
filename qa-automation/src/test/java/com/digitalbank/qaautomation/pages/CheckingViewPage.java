@@ -31,7 +31,6 @@ public class CheckingViewPage extends BasePage {
     public String getNoAccountAlert() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(driver -> noAccountAlert.isDisplayed());
-        System.out.println("Texto que está devolviendo: " + noAccountAlertTitle.getText());
         return noAccountAlertTitle.getText();
     }
 
