@@ -1,4 +1,4 @@
-package com.digitalbank.qaautomation.tests.viewChecking;
+package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
