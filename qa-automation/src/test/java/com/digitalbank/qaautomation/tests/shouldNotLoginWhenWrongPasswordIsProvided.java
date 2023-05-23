@@ -1,4 +1,4 @@
-package com.digitalbank.qaautomation.tests.loginTests;
+package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.dataProviders.ShouldNotLoginData;
 import io.qameta.allure.Description;
@@ -28,23 +28,21 @@ public class shouldNotLoginWhenWrongPasswordIsProvided {
         driver.quit();
     }
 
-    @Description("This test should try to log in to the website with the specified credentials")
+    @Description("This test should try to log in to the website with valid username and wrong password")
     @Test(testName = "Try login with valid username and wrong password ",dataProvider = "credentials", dataProviderClass = ShouldNotLoginData.class)
     public void loginTest(String user, String pass) throws Exception {
 
-        // Navigate to the home page of the web application being tested.
         driver.get("http://digitalbank.upcamp.io/bank/login");
 
-        // Try Login to the website
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
 
-        //Assert URL
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrl, "http://digitalbank.upcamp.io/bank/login?error");
+        String expectedUrl = "http://digitalbank.upcamp.io/bank/login?error";
+        Assert.assertEquals(currentUrl, expectedUrl);
 
-        //Assert wrong credentials alert on login page
         String cantLoginAlert = loginPage.cantLoginAlert.getText();
-        Assert.assertEquals(cantLoginAlert, "Error Invalid credentials or access not granted due to user account status or an existing user session.\n" + "×");
+        String expectedCantLoginAlert = ("Error Invalid credentials or access not granted due to user account status or an existing user session.\n" + "×");
+        Assert.assertEquals(cantLoginAlert, expectedCantLoginAlert);
     }
 }

@@ -21,6 +21,7 @@ import org.openqa.selenium.support.FindBy;
             super(driver);
         }
 
+        @Step ("Click the profile button to display the menu")
         public void clickUserProfileBtn() {
             userProfileBtn.click();
         }

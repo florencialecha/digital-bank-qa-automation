@@ -1,4 +1,4 @@
-package com.digitalbank.qaautomation.tests.loginTests;
+package com.digitalbank.qaautomation.tests;
 
 
 import com.digitalbank.qaautomation.dataProviders.RememberMeLoginData;
@@ -34,7 +34,6 @@ public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
     @Description("This test will verify that after logout the 'Username' credential is remembered if the 'Remember Me' box was checked on login. ")
     @Test(testName = "Try login with valid username and wrong password ",dataProvider = "credentials", dataProviderClass = RememberMeLoginData.class)
     public void loginTest(String user, String pass) throws Exception {
-
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
 
