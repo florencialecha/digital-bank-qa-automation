@@ -1,6 +1,5 @@
 package com.digitalbank.qaautomation.tests.loginTests;
 
-
 import com.digitalbank.qaautomation.dataProviders.ShouldNotLoginData;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
@@ -47,8 +46,5 @@ public class shouldNotLoginWhenWrongPasswordIsProvided {
         //Assert wrong credentials alert on login page
         String cantLoginAlert = loginPage.cantLoginAlert.getText();
         Assert.assertEquals(cantLoginAlert, "Error Invalid credentials or access not granted due to user account status or an existing user session.\n" + "×");
-
-
-
     }
 }

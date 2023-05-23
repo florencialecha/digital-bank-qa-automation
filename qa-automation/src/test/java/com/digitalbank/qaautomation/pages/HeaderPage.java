@@ -29,7 +29,7 @@ import org.openqa.selenium.support.FindBy;
             deleteDataBtn.click();
             return new HomePage(driver);
         }
-        
+
         @Step ("Logging out of the site")
         public LoginPage logOut(){
             userProfileBtn.click();
