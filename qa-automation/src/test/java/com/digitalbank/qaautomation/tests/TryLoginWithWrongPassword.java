@@ -1,5 +1,4 @@
-package com.digitalbank.qaautomation.tests.loginTests;
-
+package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.dataProviders.ShouldNotLoginData;
 import io.qameta.allure.Description;
@@ -12,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class shouldNotLoginWhenWrongPasswordIsProvided {
+public class TryLoginWithWrongPassword {
 
     private WebDriver driver;
 
@@ -29,15 +28,11 @@ public class shouldNotLoginWhenWrongPasswordIsProvided {
         driver.quit();
     }
 
-    @Description("This test should try to log in to the website with Valid username and wrong password")
+    @Description("This test should try to log in to the website with valid username and wrong password")
     @Test(testName = "Try login with valid username and wrong password ",dataProvider = "credentials", dataProviderClass = ShouldNotLoginData.class)
-    public void loginTest(String user, String pass) throws Exception {
+    public void shouldNotLoginWhenWrongPasswordIsProvided(String user, String pass) throws Exception {
 
-        
         driver.get("http://digitalbank.upcamp.io/bank/login");
-        String confirmLoginPage = driver.getCurrentUrl();
-        String expectedLoginPage = "http://digitalbank.upcamp.io/bank/login";
-        Assert.assertEquals(confirmLoginPage, expectedLoginPage);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
@@ -46,11 +41,8 @@ public class shouldNotLoginWhenWrongPasswordIsProvided {
         String expectedUrl = "http://digitalbank.upcamp.io/bank/login?error";
         Assert.assertEquals(currentUrl, expectedUrl);
 
-        String cantLoginAlert = loginPage.cantLoginAlert.getText();
+        String cantLoginAlert = loginPage.getCantLoginAlert();
         String expectedCantLoginAlert = ("Error Invalid credentials or access not granted due to user account status or an existing user session.\n" + "×");
-        Assert.assertEquals(cantLoginAlert, expectedCantLoginAlert );
-
-
-
+        Assert.assertEquals(cantLoginAlert, expectedCantLoginAlert);
     }
 }
