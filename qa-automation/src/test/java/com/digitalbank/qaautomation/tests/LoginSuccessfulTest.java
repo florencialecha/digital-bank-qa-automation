@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.dataProviders.LoginData;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class shouldLoginWhenValidCredentialsAreProvided {
+public class LoginSuccessfulTest {
 
     private WebDriver driver;
 
@@ -31,7 +31,7 @@ public class shouldLoginWhenValidCredentialsAreProvided {
 
     @Description("This test should try to log in to the website with the specified credentials")
     @Test(testName = "Login with valid credentials ",dataProvider = "credentials", dataProviderClass = LoginData.class)
-    public void loginTest(String user, String pass) throws Exception {
+    public void shouldLoginWhenValidCredentialsAreProvided(String user, String pass) throws Exception {
 
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
