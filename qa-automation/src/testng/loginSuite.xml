@@ -5,9 +5,9 @@
     </listeners>
     <test name="Login Suite">
         <classes>
-            <class name="com.digitalbank.qaautomation.tests.TryLoginWithWrongPassword"></class>
+            <class name="com.digitalbank.qaautomation.tests.LoginWithWrongPassword"></class>
             <class name="com.digitalbank.qaautomation.tests.LoginSuccessfulTest"></class>
-            <class name="com.digitalbank.qaautomation.tests.shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck"></class>
+            <class name="com.digitalbank.qaautomation.tests.LoginRememberMeTest"></class>
         </classes>
     </test>
 </suite>
