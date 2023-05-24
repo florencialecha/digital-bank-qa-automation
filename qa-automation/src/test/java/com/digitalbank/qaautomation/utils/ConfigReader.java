@@ -24,6 +24,9 @@ public class ConfigReader {
     public String getLoginErrorUrl() {
         return properties.getProperty("app.loginErrorUrl");
     }
+    public String getLogOutUrl() {
+        return properties.getProperty("app.logOutUrl");
+    }
     public String getHomeUrl() {
         return properties.getProperty("app.homeUrl");
     }

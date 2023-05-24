@@ -43,7 +43,7 @@ public class LoginRememberMeTest {
         HeaderPage headerPage = new HeaderPage(driver);
 
         String currentUrl = driver.getCurrentUrl();
-        String expectedUrl = "http://digitalbank.upcamp.io/bank/home";
+        String expectedUrl = configReader.getHomeUrl();
         Assert.assertEquals(currentUrl, expectedUrl);
 
         headerPage.logOut();
