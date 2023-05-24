@@ -34,4 +34,4 @@ build/
 
 ### Allure ###
 
-allure-results/
+#allure-results/
