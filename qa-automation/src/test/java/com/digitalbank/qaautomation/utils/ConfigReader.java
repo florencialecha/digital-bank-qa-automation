@@ -30,4 +30,5 @@ public class ConfigReader {
     public String getHomeUrl() {
         return properties.getProperty("app.homeUrl");
     }
+
 }

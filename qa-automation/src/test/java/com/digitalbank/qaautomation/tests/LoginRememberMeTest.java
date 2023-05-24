@@ -49,7 +49,7 @@ public class LoginRememberMeTest {
         headerPage.logOut();
 
         String currentLogoutUrl = driver.getCurrentUrl();
-        String expectedLogoutUrl = "http://digitalbank.upcamp.io/bank/login?logout";
+        String expectedLogoutUrl = configReader.getLogOutUrl();
         Assert.assertEquals(currentLogoutUrl, expectedLogoutUrl);
         String rememberedUsername = loginPage.getRememberedUsername();
         Assert.assertEquals(rememberedUsername, user);
