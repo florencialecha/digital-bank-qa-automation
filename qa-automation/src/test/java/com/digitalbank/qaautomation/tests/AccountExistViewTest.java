@@ -1,4 +1,4 @@
-package com.digitalbank.qaautomation.tests.viewChecking;
+package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
@@ -14,9 +14,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class shouldReturnNoAccountMessageWhenViewingEmptyCheckingAccountTest {
+public class AccountExistViewTest {
 
-    protected WebDriver driver;
+    private WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
@@ -27,27 +27,35 @@ public class shouldReturnNoAccountMessageWhenViewingEmptyCheckingAccountTest {
     }
 
     @Feature("Checking Account Display")
-    @Story("Display message when viewing empty checking account")
-    @Description("When a user with no checking accounts views their checking accounts, a 'No Account' message should be displayed.")
+    @Story("Display account cards and transaction history when checking accounts exist")
+    @Description("When a user with checking accounts views their checking accounts, account cards and transaction history should be displayed.")
     @Test
-    public void handle() {
+    public void shouldDisplayCheckingViewPageWhenAccountsExist() {
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
+
         SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
-        //Esperas una alerta que diga no accounts
-        String expectedMessage = "No Accounts";
-        String actualMessage = checkingViewPage.getNoAccountAlert();
-        Assert.assertEquals(actualMessage, expectedMessage, "The message should inform the user that no account exists");
+        String expectedTitle = "View Checking Accounts";
+        String actualTitle = checkingViewPage.getPageTitleText();
+        String titleErrorMessage = "The page title should be 'View Checking Accounts' when accounts exist";
+        Assert.assertEquals(actualTitle, expectedTitle, titleErrorMessage);
+
+        boolean isAccountCardDisplayed = checkingViewPage.isAccountCardDisplayed();
+        String accountCardErrorMessage = "Account cards should be displayed when accounts exist";
+        Assert.assertTrue(isAccountCardDisplayed, accountCardErrorMessage);
+
+        boolean isTransactionTableDisplayed = checkingViewPage.isTransactionTableDisplayed();
+        String transactionTableErrorMessage = "Transaction history should be displayed when accounts exist";
+        Assert.assertTrue(isTransactionTableDisplayed, transactionTableErrorMessage);
 
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.close();
+        driver.quit();
     }
-
 }

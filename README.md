@@ -12,11 +12,13 @@ https://docs.google.com/spreadsheets/d/1wD-ZtN_Ml2dYcbaEL5WYhmGedhVB16YjBGcE_SqF
 - View Checking - ver movimientos cuenta corriente6 - View savings - ver movimientos caja de ahorro (FLOR)
 - View Savings - Ver movimientos caja de ahorro
 
-
-### OPCIONAL:
-- Deposit - que se pueda hacer un depósito 
-- Withdraw - que se pueda hacer un retiro
-- Trasfer Between Accounts - que se pueda hacer una transferencia
+## TEST EN PROGRESO
+- HealthCheckTest
+- My profile: AccountDeletionTest => shouldDeleteAllAccountsWhenUserClickToDeleteData()
+- New Checking: NewCheckingAccountCreation => shouldCreateNewAccountWhenValidDataIsProvided(String accountType, String ownershipType, String accountName, String initialDeposit) 
+- View Checking: AccountExistViewTest => shouldDisplayCheckingViewPageWhenAccountsExist()
+- View Checking: NoAccountExistViewTest => shouldDisplayNoAccountsAlertWhenNoAccountsExist()
+- View Checking: SingleAccountActivationTest => shouldAllowOnlyOneActiveAccountAtATime()
 
 ### Criterios para elegir las funcionalidades a testear:
 - Son las funcionalidades que más van a usar los usuarios de un banco y deben funcionar correctamente. 

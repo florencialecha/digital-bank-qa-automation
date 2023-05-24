@@ -14,6 +14,9 @@ public class SideBarPage extends BasePage {
     @FindBy(id = "view-checking-menu-item")
     private WebElement viewCheckingBtn;
 
+    @FindBy(id = "new-checking-menu-item")
+    private WebElement newCheckingBtn;
+
     public SideBarPage(WebDriver driver) {
         super(driver);
     }
@@ -29,8 +32,9 @@ public class SideBarPage extends BasePage {
         return new CheckingViewPage(driver);
     }
 
-    @Step ("Confirm if we logged in to the website")
-    public boolean isLogoPresent() {
-        return !driver.findElements(By.className("navbar-brand")).isEmpty();
+    @Step("Click on the new checking account button")
+    public NewCheckingPage clickNewCheckingPageButton() {
+        newCheckingBtn.click();
+        return new NewCheckingPage(driver);
     }
 }
