@@ -4,6 +4,7 @@ import com.digitalbank.qaautomation.dataProviders.LoginData;
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
 import com.digitalbank.qaautomation.pages.SideBarPage;
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -18,6 +19,7 @@ import org.testng.annotations.Test;
 public class NoAccountExistViewTest {
 
     private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     public void setUp() {
@@ -25,6 +27,7 @@ public class NoAccountExistViewTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+        configReader = new ConfigReader();
     }
 
     @Feature("Checking Account Display")
@@ -33,7 +36,7 @@ public class NoAccountExistViewTest {
     @Test(dataProvider = "credentials", dataProviderClass = LoginData.class)
     public void shouldDisplayNoAccountsAlertWhenNoAccountsExist(String user, String pass) {
 
-        driver.get("http://digitalbank.upcamp.io/bank/login");
+        driver.get(configReader.getLoginUrl());
         LoginPage loginPage = new LoginPage(driver);
 
         SideBarPage sideBarPage = loginPage.logIn(user, pass);
