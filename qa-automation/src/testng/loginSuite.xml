@@ -3,8 +3,9 @@
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
-    <test name="Login Successful Test">
+    <test name="Login Suite">
         <classes>
+            <class name="com.digitalbank.qaautomation.tests.TryLoginWithWrongPassword"></class>
             <class name="com.digitalbank.qaautomation.tests.LoginSuccessfulTest"></class>
         </classes>
     </test>
