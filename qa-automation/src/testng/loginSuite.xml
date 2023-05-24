@@ -3,9 +3,9 @@
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
-    <test name="NOMBRE DEL TEST">
+    <test name="Login Successful Test">
         <classes>
-            <!-- AGREGAR TESTS CLASES-->
+            <class name="com.digitalbank.qaautomation.tests.LoginSuccessfulTest"></class>
         </classes>
     </test>
 </suite>
