@@ -1,5 +1,6 @@
 package com.digitalbank.qaautomation.tests;
 
+import com.digitalbank.qaautomation.dataProviders.LoginData;
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
 import com.digitalbank.qaautomation.pages.SideBarPage;
@@ -29,13 +30,13 @@ public class AccountExistViewTest {
     @Feature("Checking Account Display")
     @Story("Display account cards and transaction history when checking accounts exist")
     @Description("When a user with checking accounts views their checking accounts, account cards and transaction history should be displayed.")
-    @Test
-    public void shouldDisplayCheckingViewPageWhenAccountsExist() {
+    @Test(dataProvider = "credentials", dataProviderClass = LoginData.class)
+    public void shouldDisplayCheckingViewPageWhenAccountsExist(String user, String pass) {
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
         LoginPage loginPage = new LoginPage(driver);
 
-        SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
+        SideBarPage sideBarPage = loginPage.logIn(user, pass);
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 
