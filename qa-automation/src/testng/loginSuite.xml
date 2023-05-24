@@ -3,9 +3,9 @@
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
-    <test name="NOMBRE DEL TEST">
+    <test name="Remember Me function">
         <classes>
-            <!-- AGREGAR TESTS CLASES-->
+            <class name="com.digitalbank.qaautomation.tests.VerifyRememberMeCheckboxFunctionality"></class>
         </classes>
     </test>
 </suite>
