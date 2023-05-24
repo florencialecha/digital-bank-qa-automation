@@ -38,7 +38,7 @@ public class NewCheckingAccountSuccessfulTest {
         driver.get(configReader.getLoginUrl());
         LoginPage loginPage = new LoginPage(driver);
 
-        SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
+        SideBarPage sideBarPage = loginPage.logIn("nightshinigamix@gmail.com", "Data123!");
         sideBarPage.clickCheckingList();
         NewCheckingPage newCheckingPage = sideBarPage.clickNewCheckingPageButton();
 
