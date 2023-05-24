@@ -21,7 +21,9 @@ public class ConfigReader {
     public String getLoginUrl() {
         return properties.getProperty("app.loginUrl");
     }
-
+    public String getLoginErrorUrl() {
+        return properties.getProperty("app.loginErrorUrl");
+    }
     public String getHomeUrl() {
         return properties.getProperty("app.homeUrl");
     }
