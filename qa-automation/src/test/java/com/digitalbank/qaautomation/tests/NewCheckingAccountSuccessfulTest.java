@@ -6,7 +6,6 @@ import com.digitalbank.qaautomation.pages.LoginPage;
 import com.digitalbank.qaautomation.pages.NewCheckingPage;
 import com.digitalbank.qaautomation.pages.SideBarPage;
 import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +15,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class NewCheckingAccountCreation {
+public class NewCheckingAccountSuccessfulTest {
 
     private WebDriver driver;
 

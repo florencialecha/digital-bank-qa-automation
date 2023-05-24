@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class LoginWithWrongPassword {
+public class LoginWithWrongPasswordTest {
 
     private WebDriver driver;
 
