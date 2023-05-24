@@ -13,6 +13,9 @@ public class SideBarPage extends BasePage {
     @FindBy(id = "view-checking-menu-item")
     private WebElement viewCheckingBtn;
 
+    @FindBy(id = "new-checking-menu-item")
+    private WebElement newCheckingBtn;
+
     public SideBarPage(WebDriver driver) {
         super(driver);
     }
@@ -26,5 +29,11 @@ public class SideBarPage extends BasePage {
     public CheckingViewPage clickViewCheckingAccountButton() {
         viewCheckingBtn.click();
         return new CheckingViewPage(driver);
+    }
+
+    @Step("Click on the new checking account button")
+    public NewCheckingPage clickNewCheckingPageButton() {
+        newCheckingBtn.click();
+        return new NewCheckingPage(driver);
     }
 }

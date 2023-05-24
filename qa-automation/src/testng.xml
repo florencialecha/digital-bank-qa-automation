@@ -4,5 +4,6 @@
         <suite-file path="testng/healthCheckSuite.xml" />
         <suite-file path="testng/loginSuite.xml" />
         <suite-file path="testng/viewCheckingSuite.xml" />
+        <suite-file path="testng/newCheckingSuite.xml" />
     </suite-files>
 </suite>
