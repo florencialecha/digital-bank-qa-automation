@@ -41,7 +41,7 @@ public class shouldNotLoginWhenWrongPasswordIsProvided {
         String expectedUrl = "http://digitalbank.upcamp.io/bank/login?error";
         Assert.assertEquals(currentUrl, expectedUrl);
 
-        String cantLoginAlert = loginPage.cantLoginAlert.getText();
+        String cantLoginAlert = loginPage.getCantLoginAlert();
         String expectedCantLoginAlert = ("Error Invalid credentials or access not granted due to user account status or an existing user session.\n" + "×");
         Assert.assertEquals(cantLoginAlert, expectedCantLoginAlert);
     }
