@@ -7,6 +7,7 @@
         <classes>
             <class name="com.digitalbank.qaautomation.tests.TryLoginWithWrongPassword"></class>
             <class name="com.digitalbank.qaautomation.tests.LoginSuccessfulTest"></class>
+            <class name="com.digitalbank.qaautomation.tests.shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck"></class>
         </classes>
     </test>
 </suite>
