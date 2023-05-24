@@ -31,8 +31,7 @@ public class LoginSuccessfulTest {
 
     @Description("This test should try to log in to the website with the specified credentials")
     @Test(testName = "Login with valid credentials ",dataProvider = "credentials", dataProviderClass = LoginData.class)
-    public void shouldLoginWhenValidCredentialsAreProvided(String user, String pass) throws Exception {
-
+    public void shouldLoginWhenValidCredentialsAreProvided(String user, String pass) {
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
         String confirmLoginPage = driver.getCurrentUrl();
