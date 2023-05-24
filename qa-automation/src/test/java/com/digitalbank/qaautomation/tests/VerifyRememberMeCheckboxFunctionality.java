@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
+public class VerifyRememberMeCheckboxFunctionality {
 
 
     private WebDriver driver;
@@ -33,7 +33,7 @@ public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
 
     @Description("This test will verify that after logout the 'Username' credential is remembered if the 'Remember Me' box was checked on login. ")
     @Test(testName = "Try login with valid username and wrong password ",dataProvider = "credentials", dataProviderClass = RememberMeLoginData.class)
-    public void loginTest(String user, String pass) throws Exception {
+    public void shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck(String user, String pass) throws Exception {
 
         driver.get("http://digitalbank.upcamp.io/bank/login");
 
