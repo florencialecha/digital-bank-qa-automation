@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage extends BasePage {
 
     @FindBy(id = "username")
-    public WebElement usernameInput;
+    private WebElement usernameInput;
 
     @FindBy(id = "password")
     private WebElement passwordInput;
@@ -31,4 +31,17 @@ public class LoginPage extends BasePage {
         singInBtn.click();
         return new SideBarPage(driver);
     }
+
+    @Step ("Checking can't login alert")
+    public String getCantLoginAlert() {
+        String cantLoginAlertMsg = cantLoginAlert.getText();
+        return cantLoginAlertMsg;
+    }
+
+    @Step("Checking remembered username")
+    public String getRememberedUsername() {
+        String rememberedUsername = usernameInput.getAttribute("value");
+        return rememberedUsername;
+    }
+
 }
