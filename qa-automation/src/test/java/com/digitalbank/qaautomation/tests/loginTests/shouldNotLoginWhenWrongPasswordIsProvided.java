@@ -35,6 +35,9 @@ public class shouldNotLoginWhenWrongPasswordIsProvided {
 
         
         driver.get("http://digitalbank.upcamp.io/bank/login");
+        String confirmLoginPage = driver.getCurrentUrl();
+        String expectedLoginPage = "http://digitalbank.upcamp.io/bank/login";
+        Assert.assertEquals(confirmLoginPage, expectedLoginPage);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
