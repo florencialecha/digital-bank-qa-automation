@@ -3,6 +3,7 @@ package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.dataProviders.RememberMeLoginData;
 import com.digitalbank.qaautomation.pages.HeaderPage;
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,9 +15,8 @@ import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
 public class LoginRememberMeTest {
-
-
     private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     public void setUp() {
@@ -24,6 +24,7 @@ public class LoginRememberMeTest {
         ChromeOptions allowRemoteOrigins=new ChromeOptions();
         allowRemoteOrigins.addArguments("--remote-allow-origins=*");
         driver = (WebDriver) new ChromeDriver(allowRemoteOrigins);
+        configReader = new ConfigReader();
     }
 
     @AfterMethod
@@ -35,7 +36,7 @@ public class LoginRememberMeTest {
     @Test(dataProvider = "credentials", dataProviderClass = RememberMeLoginData.class)
     public void shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck(String user, String pass) throws Exception {
 
-        driver.get("http://digitalbank.upcamp.io/bank/login");
+        driver.get(configReader.getLoginUrl());
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
