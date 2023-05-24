@@ -1,5 +1,6 @@
 package com.digitalbank.qaautomation.tests;
 
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -15,7 +16,8 @@ import org.testng.annotations.Test;
 @Feature("Check Website Health")
 public class HealthCheckTest {
 
-    WebDriver driver;
+    private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     @Description("Setup the web driver and create a new session")
@@ -24,13 +26,14 @@ public class HealthCheckTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+        configReader = new ConfigReader();
     }
 
     @Test
     @Description("Verify that the main page of the website is accessible")
     public void checkMainPageAccessible() {
 
-        driver.get("http://digitalbank.upcamp.io/bank");
+        driver.get(configReader.getLoginUrl());
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://digitalbank.upcamp.io/bank/login";
         String pageErrorMessage = "The main page should be accessible";
