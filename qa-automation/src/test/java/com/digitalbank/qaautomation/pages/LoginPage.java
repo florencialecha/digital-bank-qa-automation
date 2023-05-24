@@ -27,4 +27,11 @@ public class LoginPage extends BasePage {
         singInBtn.click();
         return new SideBarPage(driver);
     }
+
+    @Step("Checking remembered username")
+    public String getRememberedUsername() {
+        String rememberedUsername = usernameInput.getAttribute("value");
+        return rememberedUsername;
+    }
+
 }
