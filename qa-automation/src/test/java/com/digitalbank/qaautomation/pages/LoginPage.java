@@ -18,7 +18,13 @@ public class LoginPage extends BasePage {
     private WebElement singInBtn;
 
     @FindBy (className = "sufee-alert")
-    public WebElement cantLoginAlert;
+    private WebElement cantLoginAlert;
+
+    @Step ("Checking can't login alert")
+    public String getCantLoginAlert() {
+        String cantLoginAlertMsg = cantLoginAlert.getText();
+        return cantLoginAlertMsg;
+    }
 
     public LoginPage(WebDriver driver) {
         super(driver);
