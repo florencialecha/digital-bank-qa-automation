@@ -1,4 +1,4 @@
-package com.digitalbank.qaautomation.tests.loginTests;
+package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.pages.HomePage;
 import io.qameta.allure.Description;
@@ -33,17 +33,16 @@ public class shouldLoginWhenValidCredentialsAreProvided {
     @Test(testName = "Login with valid credentials ",dataProvider = "credentials", dataProviderClass = LoginData.class)
     public void loginTest(String user, String pass) throws Exception {
 
-        // Navigate to the home page of the web application being tested.
+
         driver.get("http://digitalbank.upcamp.io/bank/login");
 
-        // Login to the website
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
         HomePage homePage = new HomePage(driver);
 
-        // Asserts PageTitle and URL
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrl, "http://digitalbank.upcamp.io/bank/home");
+        String expectedUrl = "http://digitalbank.upcamp.io/bank/home";
+        Assert.assertEquals(currentUrl, expectedUrl);
         String pageTitle = "Dashboard";
         Assert.assertEquals(pageTitle, homePage.dashboardTitle.getText());
     }
