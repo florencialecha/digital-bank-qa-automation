@@ -47,7 +47,10 @@ public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
 
         headerPage.logOut();
 
-        String rememberedUsername = loginPage.usernameInput.getAttribute("value");
+        String currentLogoutUrl = driver.getCurrentUrl();
+        String expectedLogoutUrl = "http://digitalbank.upcamp.io/bank/login";
+        Assert.assertEquals(currentLogoutUrl, expectedLogoutUrl);
+        String rememberedUsername = loginPage.getRememberedUsername();
         Assert.assertEquals(rememberedUsername, user);
         
     }
