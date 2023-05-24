@@ -1,7 +1,6 @@
 package com.digitalbank.qaautomation.pages;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,9 +16,6 @@ public class LoginPage extends BasePage {
     @FindBy(id = "submit")
     private WebElement singInBtn;
 
-    @FindBy (className = "sufee-alert")
-    public WebElement cantLoginAlert;
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -30,12 +26,6 @@ public class LoginPage extends BasePage {
         passwordInput.sendKeys(password);
         singInBtn.click();
         return new SideBarPage(driver);
-    }
-
-    @Step ("Checking can't login alert")
-    public String getCantLoginAlert() {
-        String cantLoginAlertMsg = cantLoginAlert.getText();
-        return cantLoginAlertMsg;
     }
 
     @Step("Checking remembered username")
