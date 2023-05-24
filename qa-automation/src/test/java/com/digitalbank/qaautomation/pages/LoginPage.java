@@ -10,24 +10,21 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "username")
     private WebElement usernameInput;
-
     @FindBy(id = "password")
     private WebElement passwordInput;
-
     @FindBy(id = "submit")
     private WebElement singInBtn;
-
     @FindBy (className = "sufee-alert")
     private WebElement cantLoginAlert;
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     @Step ("Checking can't login alert")
     public String getCantLoginAlert() {
         String cantLoginAlertMsg = cantLoginAlert.getText();
         return cantLoginAlertMsg;
-    }
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
     }
 
     @Step("Log in with username: {username} and password: {password}")
