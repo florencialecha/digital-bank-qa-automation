@@ -3,9 +3,9 @@
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
-    <test name="NOMBRE DEL TEST">
+    <test name="Try Login With Wrong Passwords">
         <classes>
-            <!-- AGREGAR TESTS CLASES-->
+            <class name="com.digitalbank.qaautomation.tests.TryLoginWithWrongPassword"></class>
         </classes>
     </test>
 </suite>
