@@ -45,7 +45,7 @@ public class LoginSuccessfulTest {
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://digitalbank.upcamp.io/bank/home";
         Assert.assertEquals(currentUrl, expectedUrl);
-        String pageTitle = "Dashboard";
-        Assert.assertEquals(pageTitle, homePage.dashboardTitle.getText());
+        String expectedPageTitle = "Dashboard";
+        Assert.assertEquals(expectedPageTitle, homePage.dashboardTitle.getText());
     }
 }
