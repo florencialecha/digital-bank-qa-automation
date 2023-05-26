@@ -10,10 +10,8 @@ import org.openqa.selenium.support.FindBy;
 
         @FindBy(css = ".dropdown-toggle .user-avatar")
         private WebElement userProfileBtn;
-
         @FindBy(css = ".nav-link[href='/bank/user/delete-data']")
         private WebElement deleteDataBtn;
-
         @FindBy(css = ".nav-link[href='/bank/logout']")
         private WebElement logoutBtn;
 
@@ -31,5 +29,6 @@ import org.openqa.selenium.support.FindBy;
             userProfileBtn.click();
             logoutBtn.click();
             return new LoginPage(driver);
-    }
+        }
+
 }

@@ -1,8 +1,10 @@
 package com.digitalbank.qaautomation.tests;
 
+import com.digitalbank.qaautomation.dataProviders.LoginData;
 import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
 import com.digitalbank.qaautomation.pages.SideBarPage;
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -17,6 +19,7 @@ import org.testng.annotations.Test;
 public class SingleAccountActivationTest {
 
     private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     public void setUp() {
@@ -24,18 +27,19 @@ public class SingleAccountActivationTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+        configReader = new ConfigReader();
     }
 
     @Feature("Account Activation")
     @Story("Activation of a single account at a time")
     @Description("When a user activates one account, any other active account should be deactivated.")
-    @Test
-    public void shouldAllowOnlyOneActiveAccountAtATime() {
+    @Test(dataProvider = "credentials", dataProviderClass = LoginData.class)
+    public void shouldAllowOnlyOneActiveAccountAtATime(String user, String pass) {
 
-        driver.get("http://digitalbank.upcamp.io/bank/login");
+        driver.get(configReader.getLoginUrl());
         LoginPage loginPage = new LoginPage(driver);
 
-        SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
+        SideBarPage sideBarPage = loginPage.logIn(user, pass);
         sideBarPage.clickCheckingList();
         CheckingViewPage checkingViewPage = sideBarPage.clickViewCheckingAccountButton();
 

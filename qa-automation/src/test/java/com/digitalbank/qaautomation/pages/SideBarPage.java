@@ -10,10 +10,8 @@ public class SideBarPage extends BasePage {
 
     @FindBy(id = "checking-menu")
     private WebElement checkingListBtn;
-
     @FindBy(id = "view-checking-menu-item")
     private WebElement viewCheckingBtn;
-
     @FindBy(id = "new-checking-menu-item")
     private WebElement newCheckingBtn;
 

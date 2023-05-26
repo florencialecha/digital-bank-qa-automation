@@ -1,6 +1,7 @@
 package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.pages.HomePage;
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,6 +16,7 @@ import com.digitalbank.qaautomation.pages.LoginPage;
 public class LoginSuccessfulTest {
 
     private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     public void setUp() {
@@ -22,6 +24,7 @@ public class LoginSuccessfulTest {
         ChromeOptions allowRemoteOrigins=new ChromeOptions();
         allowRemoteOrigins.addArguments("--remote-allow-origins=*");
         driver = (WebDriver) new ChromeDriver(allowRemoteOrigins);
+        configReader = new ConfigReader();
     }
 
     @AfterMethod
@@ -33,9 +36,9 @@ public class LoginSuccessfulTest {
     @Test(testName = "Login with valid credentials ",dataProvider = "credentials", dataProviderClass = LoginData.class)
     public void shouldLoginWhenValidCredentialsAreProvided(String user, String pass) {
 
-        driver.get("http://digitalbank.upcamp.io/bank/login");
+        driver.get(configReader.getLoginUrl());
         String confirmLoginPage = driver.getCurrentUrl();
-        String expectedLoginPage = "http://digitalbank.upcamp.io/bank/login";
+        String expectedLoginPage = configReader.getLoginUrl();
         Assert.assertEquals(confirmLoginPage, expectedLoginPage);
 
         LoginPage loginPage = new LoginPage(driver);
@@ -43,7 +46,7 @@ public class LoginSuccessfulTest {
         HomePage homePage = new HomePage(driver);
 
         String currentUrl = driver.getCurrentUrl();
-        String expectedUrl = "http://digitalbank.upcamp.io/bank/home";
+        String expectedUrl = configReader.getHomeUrl();
         Assert.assertEquals(currentUrl, expectedUrl);
         String expectedPageTitle = "Dashboard";
         Assert.assertEquals(expectedPageTitle, homePage.dashboardTitle.getText());

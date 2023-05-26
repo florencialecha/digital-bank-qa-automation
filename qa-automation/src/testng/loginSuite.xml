@@ -1,12 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="LoginSuite">
+<suite name="Login Suite">
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
     <test name="Login Suite">
         <classes>
-            <class name="com.digitalbank.qaautomation.tests.TryLoginWithWrongPassword"></class>
+            <class name="com.digitalbank.qaautomation.tests.LoginWithWrongPasswordTest"></class>
             <class name="com.digitalbank.qaautomation.tests.LoginSuccessfulTest"></class>
+            <class name="com.digitalbank.qaautomation.tests.LoginRememberMeTest"></class>
         </classes>
     </test>
 </suite>

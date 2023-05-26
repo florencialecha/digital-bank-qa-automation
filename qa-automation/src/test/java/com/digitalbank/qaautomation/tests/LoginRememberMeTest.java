@@ -3,6 +3,7 @@ package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.dataProviders.RememberMeLoginData;
 import com.digitalbank.qaautomation.pages.HeaderPage;
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,10 +14,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
-
-
+public class LoginRememberMeTest {
     private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     public void setUp() {
@@ -24,6 +24,7 @@ public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
         ChromeOptions allowRemoteOrigins=new ChromeOptions();
         allowRemoteOrigins.addArguments("--remote-allow-origins=*");
         driver = (WebDriver) new ChromeDriver(allowRemoteOrigins);
+        configReader = new ConfigReader();
     }
 
     @AfterMethod
@@ -32,23 +33,23 @@ public class shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck {
     }
 
     @Description("This test will verify that after logout the 'Username' credential is remembered if the 'Remember Me' box was checked on login. ")
-    @Test(testName = "Try login with valid username and wrong password ",dataProvider = "credentials", dataProviderClass = RememberMeLoginData.class)
-    public void loginTest(String user, String pass) throws Exception {
+    @Test(dataProvider = "credentials", dataProviderClass = RememberMeLoginData.class)
+    public void shouldRembemberLastLogedUsernameWhenRememberMeCheckboxIsCheck(String user, String pass) throws Exception {
 
-        driver.get("http://digitalbank.upcamp.io/bank/login");
+        driver.get(configReader.getLoginUrl());
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
         HeaderPage headerPage = new HeaderPage(driver);
 
         String currentUrl = driver.getCurrentUrl();
-        String expectedUrl = "http://digitalbank.upcamp.io/bank/home";
+        String expectedUrl = configReader.getHomeUrl();
         Assert.assertEquals(currentUrl, expectedUrl);
 
         headerPage.logOut();
 
         String currentLogoutUrl = driver.getCurrentUrl();
-        String expectedLogoutUrl = "http://digitalbank.upcamp.io/bank/login";
+        String expectedLogoutUrl = configReader.getLogOutUrl();
         Assert.assertEquals(currentLogoutUrl, expectedLogoutUrl);
         String rememberedUsername = loginPage.getRememberedUsername();
         Assert.assertEquals(rememberedUsername, user);

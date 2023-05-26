@@ -7,10 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 public class HomePage extends BasePage {
-
-    public HomePage(WebDriver driver) { super(driver); }
-
     @FindBy (id = "page-title")
     public WebElement dashboardTitle;
+
+    public HomePage(WebDriver driver) { super(driver); }
 
 }

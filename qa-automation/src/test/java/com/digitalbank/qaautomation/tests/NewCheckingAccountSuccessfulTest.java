@@ -5,8 +5,8 @@ import com.digitalbank.qaautomation.pages.CheckingViewPage;
 import com.digitalbank.qaautomation.pages.LoginPage;
 import com.digitalbank.qaautomation.pages.NewCheckingPage;
 import com.digitalbank.qaautomation.pages.SideBarPage;
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,9 +16,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class NewCheckingAccountCreation {
+public class NewCheckingAccountSuccessfulTest {
 
     private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     public void setUp() {
@@ -26,6 +27,7 @@ public class NewCheckingAccountCreation {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+        configReader = new ConfigReader();
     }
 
     @Story("Creation of different types of checking accounts")
@@ -33,10 +35,10 @@ public class NewCheckingAccountCreation {
     @Test(dataProvider = "accountData", dataProviderClass = AccountData.class)
     public void shouldCreateNewAccountWhenValidDataIsProvided(String accountType, String ownershipType, String accountName, String initialDeposit) {
 
-        driver.get("http://digitalbank.upcamp.io/bank/login");
+        driver.get(configReader.getLoginUrl());
         LoginPage loginPage = new LoginPage(driver);
 
-        SideBarPage sideBarPage = loginPage.logIn("tabewec832@andorem.com", "Demo123!");
+        SideBarPage sideBarPage = loginPage.logIn("nightshinigamix@gmail.com", "Data123!");
         sideBarPage.clickCheckingList();
         NewCheckingPage newCheckingPage = sideBarPage.clickNewCheckingPageButton();
 

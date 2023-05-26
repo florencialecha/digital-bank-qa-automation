@@ -1,1 +1,0 @@
-{"uuid":"a71d287d-ea33-46db-87bb-0fe9b5ed4db2","name":"com.digitalbank.qaautomation.tests.loginTests.shouldNotLoginWhenWrongPasswordIsProvided","children":["41b7ba94-bfc0-47e7-98bd-eb7bf6d3f805"],"befores":[],"afters":[],"start":1684801045982,"stop":1684801052387}

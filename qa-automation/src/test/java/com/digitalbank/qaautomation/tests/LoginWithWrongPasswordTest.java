@@ -1,6 +1,7 @@
 package com.digitalbank.qaautomation.tests;
 
 import com.digitalbank.qaautomation.dataProviders.ShouldNotLoginData;
+import com.digitalbank.qaautomation.utils.ConfigReader;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,9 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.digitalbank.qaautomation.pages.LoginPage;
 
-public class TryLoginWithWrongPassword {
+public class LoginWithWrongPasswordTest {
 
     private WebDriver driver;
+    private ConfigReader configReader;
 
     @BeforeMethod
     public void setUp() {
@@ -21,6 +23,7 @@ public class TryLoginWithWrongPassword {
         ChromeOptions allowRemoteOrigins=new ChromeOptions();
         allowRemoteOrigins.addArguments("--remote-allow-origins=*");
         driver = (WebDriver) new ChromeDriver(allowRemoteOrigins);
+        configReader = new ConfigReader();
     }
 
     @AfterMethod
@@ -32,13 +35,12 @@ public class TryLoginWithWrongPassword {
     @Test(testName = "Try login with valid username and wrong password ",dataProvider = "credentials", dataProviderClass = ShouldNotLoginData.class)
     public void shouldNotLoginWhenWrongPasswordIsProvided(String user, String pass) throws Exception {
 
-        driver.get("http://digitalbank.upcamp.io/bank/login");
-
+        driver.get(configReader.getLoginUrl());
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(user, pass);
 
         String currentUrl = driver.getCurrentUrl();
-        String expectedUrl = "http://digitalbank.upcamp.io/bank/login?error";
+        String expectedUrl = configReader.getLoginErrorUrl();
         Assert.assertEquals(currentUrl, expectedUrl);
 
         String cantLoginAlert = loginPage.getCantLoginAlert();
